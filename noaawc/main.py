@@ -8,7 +8,7 @@ license: GPLv3
 '''
 
 import numpy as np
-import pygrib
+#import pygrib
 import matplotlib.pyplot as plt
 from mpl_toolkits.basemap import Basemap
 from noawclg import get_noaa_data as gnd
@@ -28,7 +28,7 @@ def plot_global(path:str,indice:int,title='plot',text:str=False,pos_text:tuple=F
                pos_annotate:tuple=False,text_color='white',text_size=9,fontweight_text='bold',
                facecolor_text:str='red',edgecolor_text:str='black',annotate_size:float=9, 
                 annotate_color:str='white',loc_focus:tuple=(0,0),key_noaa='tmpmwl',subtr_data=273,
-               text_cb='ºC',alpha=1):
+               text_cb='ºC',alpha=1,author='@gpftc'):
     ax = plt.subplot(111)
     lat  = dn['lat'][:]
     lon  = dn['lon'][:]
@@ -72,7 +72,7 @@ def plot_global(path:str,indice:int,title='plot',text:str=False,pos_text:tuple=F
     #plt.clf()
     cbar=plt.colorbar(cm,orientation='horizontal',extend='both',fraction=0.07,pad=0.05)
     cbar.set_label(text_cb,y=0,ha='right')
-    cbar.ax.set_title('by: @gpftc_ifsertão',fontweight='bold')
+    cbar.ax.set_title(f'by: {author}',fontweight='bold')
     
     
     #temp_cbar=np.linspace(-40,36,8)

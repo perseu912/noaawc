@@ -13,4 +13,4 @@ plt.style.use('dark_background')
 #            annotate_color='white'
 
 plot_global(path='juazeiro_wind.png',title=f'Velocidade dos jatos\nde ventos',key_noaa='apcpsfc',
-            indice=indice,loc_focus=(-9.41,-40.5),subtr_data=0,text_cb='mm',alpha=.7)
+            indice=indice,loc_focus=(-9.41,-40.5),subtr_data=0,text_cb='mm',alpha=.7,author='@gpftc | @reinanbr_')
