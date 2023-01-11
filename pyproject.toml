@@ -8,7 +8,7 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.9"
-noawclg = "^0.0.4.5.1"
+noawclg = "^0.0.4.6"
 basemap = "^1.3.6"
 imageio = "^2.23.0"
 psutil = "^5.9.4"

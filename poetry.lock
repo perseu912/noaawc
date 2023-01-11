@@ -512,13 +512,13 @@ numpy = ">=1.9"
 
 [[package]]
 name = "noawclg"
-version = "0.0.4.5.1"
+version = "0.0.4.7"
 description = "Library for getting dataset from noaa site"
 category = "main"
 optional = false
 python-versions = "*"
 files = [
-    {file = "noawclg-0.0.4.5.1-py3-none-any.whl", hash = "sha256:0f2b36aaba0f0b24dbd8909b9774d74e69d692420486fd5c1ced2d9c48ca0f17"},
+    {file = "noawclg-0.0.4.7-py3-none-any.whl", hash = "sha256:b0ca8a43d710be846d8decce19136ba2d0e3b51bc001fc28e39fac590563f992"},
 ]
 
 [package.dependencies]
@@ -895,4 +895,4 @@ viz = ["matplotlib", "nc-time-axis", "seaborn"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.9"
-content-hash = "6e583f67db221cbdc31e50acc4a52f517a48f88e5700c5e407f1b0e45f0dd0b1"
+content-hash = "f70deefbfedd57870693e3f30b6dcb8aaa11d0428a68a2efc682c401693a4f61"
