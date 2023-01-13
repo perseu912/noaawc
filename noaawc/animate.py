@@ -1,4 +1,12 @@
 
+'''
+Reinan Br <slimchatuba@gmail.com>
+5 jan 2022 19:08 (init)
+lib: noaawc
+license: GPLv3
+--------------------------------------------------
+
+'''
 import numpy as np
 #import pygrib
 import psutil as ps
@@ -6,15 +14,16 @@ import imageio
 import time
 import os
 from noaawc.plot import plot_global
+import matplotlib.pyplot as plt
 
 
 
 
 
 
-def create_plot_gif(path_gif='img.gif',size:int=60,path_data='data/img_',title='',key_noaa='vgrdpbl',
+def create_plot_gif(path_gif='img.gif',size:int=70,path_data='data/img_',title='',key_noaa='vgrdpbl',
                    loc_focus=(0,0),point_init=False,point_end=False,text_cb='°C',lon_stop=False,alpha=1,
-                   subtr_data=0,speed_degree_frame=3):
+                   subtr_data=0,speed_degree_frame=1):
 
     assert size < 128, print('size of data is max 128!!')
     images = []
@@ -55,6 +64,10 @@ def create_plot_gif(path_gif='img.gif',size:int=60,path_data='data/img_',title='
         #print(locs_focus)
         pg = plot_global(path=path_img,title=title,key_noaa=key_noaa,alpha=alpha,
                 indice=i,loc_focus=locs_focus[i],subtr_data=subtr_data,text_cb=text_cb)
+        
+        pg.cmap = plt.cm.jet
+
+        #pg.date = '10/01/2023'
         pg.render(show=False)
         ping = time.time()-time0
         ping_list = np.append(ping_list,[ping])

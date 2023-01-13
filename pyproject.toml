@@ -12,6 +12,7 @@ noawclg = "^0.0.4.6"
 basemap = "^1.3.6"
 imageio = "^2.23.0"
 psutil = "^5.9.4"
+kitano = "^0.0.7"
 
 
 [build-system]

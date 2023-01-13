@@ -322,6 +322,17 @@ test = ["fsspec[github]", "invoke", "pytest", "pytest-cov"]
 tifffile = ["tifffile"]
 
 [[package]]
+name = "kitano"
+version = "0.0.7"
+description = "Library for development and works in python3.9+"
+category = "main"
+optional = false
+python-versions = "*"
+files = [
+    {file = "kitano-0.0.7-py3-none-any.whl", hash = "sha256:dfeb46de6c98f55913ac52e4d02f0a37555bf9b71a338e2d5c2e0455aa26993f"},
+]
+
+[[package]]
 name = "kiwisolver"
 version = "1.4.4"
 description = "A fast implementation of the Cassowary constraint solver"
@@ -512,13 +523,13 @@ numpy = ">=1.9"
 
 [[package]]
 name = "noawclg"
-version = "0.0.4.7"
+version = "0.0.4.9"
 description = "Library for getting dataset from noaa site"
 category = "main"
 optional = false
 python-versions = "*"
 files = [
-    {file = "noawclg-0.0.4.7-py3-none-any.whl", hash = "sha256:b0ca8a43d710be846d8decce19136ba2d0e3b51bc001fc28e39fac590563f992"},
+    {file = "noawclg-0.0.4.9-py3-none-any.whl", hash = "sha256:434494678ab8da68d95d8d7b86514a47b05f06567330df8589a3db9e65c94ad6"},
 ]
 
 [package.dependencies]
@@ -895,4 +906,4 @@ viz = ["matplotlib", "nc-time-axis", "seaborn"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.9"
-content-hash = "f70deefbfedd57870693e3f30b6dcb8aaa11d0428a68a2efc682c401693a4f61"
+content-hash = "f1cc30c37e00ef6bf1565f0b87b41b306978c147ad7f710ac1bda3c554269fc6"
