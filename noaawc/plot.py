@@ -73,6 +73,11 @@ class plot_global:
     annotate_focus_txt:str = None
     color_annote_focus:str = None
     fontweight_annote_focus:str = None
+    
+    pos_annotate_loc:tuple=None
+    annotate_loc_txt:str = None
+    color_annote_loc:str = None
+    fontweight_annote_loc:str = None
     #pos_annotate_focus:str = None
     
     
@@ -177,28 +182,56 @@ class plot_global:
                               xycoords='data',
                               textcoords='data')
 
+        # anotate data focus
+        if self.annotate_loc_txt and self.pos_annotate_loc:
+            puts('writing data focus')
+            xn,yn=self.m(self.pos_annotate_loc[1],self.pos_annotate_loc[0])
+            self.plt.annotate(self.annotate_loc_txt,
+                              color=self.color_annote_loc,
+                              xy=(xn,yn),
+                              fontweight=self.fontweight_annote_loc,
+                              xytext=(xn,yn),
+                              xycoords='data',
+                              textcoords='data')
+
         self.plt.title(self.title,fontweight='bold',fontsize=16)
         
         
         
     def annotate_data_focus(self,txt:str,fontsize:int=None,color:str='black',fontweight:str='bold'):
         data_city = self.dn.get_data_from_point(self.loc_focus)
-        post_data = f'{((data_city[self.key_noaa].to_pandas()[self.indice]-self.subtr_data)[0]):.2f}'
+        post_data = f'{(float(data_city[self.key_noaa].to_pandas()[self.indice]-self.subtr_data)):.2f}'
         self.annotate_focus_txt = txt%{'data':post_data}
         self.color_annote_focus = color
         self.fontweight_annote_focus = fontweight
         self.pos_annotate_focus = self.loc_focus
         
         
+    def annotate_data_loc(self,txt:str,loc:tuple=(40.776676,-73.971321),fontsize:int=None,color:str='black',fontweight:str='bold'):
+        data_city = self.dn.get_data_from_point(loc)
+        post_data = f'{((data_city[self.key_noaa].to_pandas()[self.indice]-self.subtr_data)):.2f}'
+        self.annotate_loc_txt = txt%{'data':post_data}
+        self.color_annote_loc = color
+        self.fontweight_annote_loc = fontweight
+        self.pos_annotate_loc = loc
+        
+        
     def render(self,show=True,save=True):
         self.plt.style.use('dark_background')
+        
         puts('getting data ..')
         self.mining_data()
         puts('getted data')
+        
+        puts('renderinzing plot ...')
         self.rendering_image()
         self.rendering_text()
+        puts('renderinzed plot')
+        
         if save:
+            puts('saving plot ...')
             self.plt.savefig(self.path)
+            puts('saved plot')
         if show:
             self.plt.show()
         self.plt.cla()

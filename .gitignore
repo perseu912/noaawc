@@ -8,6 +8,7 @@ __pycache__/
 
 # Distribution / packaging
 .Python
+test_plots/windtemp/
 build/
 develop-eggs/
 dist/

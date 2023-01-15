@@ -54,13 +54,21 @@ class Create_plot_gif:
     text_cb:str='°C'
     lon_stop:float=False
     alpha:float=.7
-    subtr_data:float=0
-    speed_degree_frame:str=1
+    subtr_data:float=273
+    speed_frame:float=1
+    speed_degree_frame:float=1
+    zoom:tuple = None
+    annotate_focus_txt:str = None
+    annotate_loc_txt:str = None
+    annotate_loc_pos:tuple = (40.776676,-73.971321)
+    fps:float = 7
+    cmap:plt.cm=plt.cm.jet
 
 
 
     def tracing(self):
         assert self.size < 128, print('size of data is max 128!!')
+        self.speed_degree_frame = self.speed_frame
         #size = frames
         self.locs_focus = []
         if self.loc_focus:
@@ -90,25 +98,33 @@ class Create_plot_gif:
 
     def render(self):
         time_0=time.time()
+
+        if not os.path.isdir('data'):
+            os.mkdir('data')
+
         images = []          
         for i in range(self.size):
             path_img = f'{self.path_data}_{i}.png'
-            #temp_j = float(data_j[i])
-            #print(locs_focus)
+
             pg = plot_global(dn=self.dn,path=path_img,title=self.title,key_noaa=self.key_noaa,alpha=self.alpha,
                     indice=i,loc_focus=self.locs_focus[i],subtr_data=self.subtr_data,text_cb=self.text_cb)
-            
-            pg.cmap = plt.cm.jet
 
-            #pg.date = '10/01/2023'
+            if self.zoom:
+                pg.zoom(*self.zoom)
+                
+            if self.annotate_focus_txt:
+                pg.annotate_data_focus(self.annotate_focus_txt)
+            
+            if self.annotate_loc_txt:
+                pg.annotate_data_loc(self.annotate_loc_txt,loc=self.annotate_loc_pos)
+
+            pg.cmap = self.cmap
+
             pg.render(show=False)
             ping_fun(time_0,i,self.size)
             images.append(imageio.imread(path_img))
 
         print('criando gif...')
         path_gif = self.path_save
-        imageio.mimsave(path_gif,images)
-
-    # def create_plot_gif(path_gif='img.gif',size:int=70,path_data='data/img_',title='',key_noaa='vgrdpbl',
-    #                    loc_focus=(0,0),point_init=False,point_end=False,text_cb='°C',lon_stop=False,alpha=1,
-    #                    subtr_data=0,speed_degree_frame=1):
+        imageio.mimsave(path_gif,images,fps=self.fps)
+        os.system('rm -rf data/*.png')
