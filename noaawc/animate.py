@@ -53,7 +53,7 @@ class Create_plot_gif:
     point_end:float=False
     text_cb:str='°C'
     lon_stop:float=False
-    alpha:float=.7
+    alpha:float=.9
     subtr_data:float=273
     speed_frame:float=1
     speed_degree_frame:float=1
@@ -61,7 +61,7 @@ class Create_plot_gif:
     annotate_focus_txt:str = None
     annotate_loc_txt:str = None
     annotate_loc_pos:tuple = (40.776676,-73.971321)
-    fps:float = 7
+    fps:float = 10
     cmap:plt.cm=plt.cm.jet
 
 

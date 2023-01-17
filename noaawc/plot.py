@@ -57,9 +57,9 @@ class plot_global:
     key_noaa:str='tmpmwl'
     subtr_data:str=273,
     text_cb:str='ºC'
-    alpha:int=.7
+    alpha:int=.9
     author:str='@gpftc_ | @reinanbr_'
-    level_data:int=20
+    level_data:int=25
     keys:str = ''
     fillcontinents_colors:str = ''
     cmap:plt.cm = plt.cm.inferno
