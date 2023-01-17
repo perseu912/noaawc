@@ -58,9 +58,11 @@ class Create_plot_gif:
     speed_frame:float=1
     speed_degree_frame:float=1
     zoom:tuple = None
+    author = '@gpfc_ | @reinanbr_'
     annotate_focus_txt:str = None
     annotate_loc_txt:str = None
     annotate_loc_pos:tuple = (40.776676,-73.971321)
+    color_annote_loc:str = 'white'
     fps:float = 10
     cmap:plt.cm=plt.cm.jet
 
@@ -107,7 +109,7 @@ class Create_plot_gif:
             path_img = f'{self.path_data}_{i}.png'
 
             pg = plot_global(dn=self.dn,path=path_img,title=self.title,key_noaa=self.key_noaa,alpha=self.alpha,
-                    indice=i,loc_focus=self.locs_focus[i],subtr_data=self.subtr_data,text_cb=self.text_cb)
+                    indice=i,loc_focus=self.locs_focus[i],subtr_data=self.subtr_data,author=self.author,text_cb=self.text_cb)
 
             if self.zoom:
                 pg.zoom(*self.zoom)
@@ -116,7 +118,7 @@ class Create_plot_gif:
                 pg.annotate_data_focus(self.annotate_focus_txt)
             
             if self.annotate_loc_txt:
-                pg.annotate_data_loc(self.annotate_loc_txt,loc=self.annotate_loc_pos)
+                pg.annotate_data_loc(self.annotate_loc_txt,loc=self.annotate_loc_pos,color=self.color_annote_loc)
 
             pg.cmap = self.cmap
 
