@@ -13,6 +13,7 @@ basemap = "^1.3.6"
 imageio = "^2.23.0"
 psutil = "^5.9.4"
 kitano = "^0.0.7"
+pytest = "^7.2.1"
 
 
 [build-system]
