@@ -46,7 +46,7 @@ class plot_global:
     pos_text:tuple=False
     annotate:str=False
     pos_annotate:tuple=False
-    text_color='white'
+    text_color:str='white'
     text_size=9
     fontweight_text='bold'
     facecolor_text:str='red'
@@ -69,16 +69,17 @@ class plot_global:
     xright:int=None
     yup:int=None
     ydown:int=None
-    pos_annotate_focus:tuple=None
-    annotate_focus_txt:str = None
-    color_annote_focus:str = None
-    fontweight_annote_focus:str = None
     
-    pos_annotate_loc:tuple=None
+    annotate_pos_focus:tuple=None
+    annotate_text_focus:str = None
+    annotate_color_focus:str = "black"
+    annotate_fontweight_focus:str = None
+    
+    annotate_loc_focus:tuple=None
     annotate_loc_txt:str = None
-    color_annote_loc:str = None
+    annotate_loc_color:str = 'black'
     fontweight_annote_loc:str = None
-    #pos_annotate_focus:str = None
+    #annotate_pos_focus:str = None
     
     
     
@@ -126,6 +127,7 @@ class plot_global:
         
         self.m.fillcontinents(self.fillcontinents_colors['color'],
                              self.fillcontinents_colors['lake_color'])
+        self.m.drawmapboundary(fill_color='aqua')
         self.cm=self.m.contourf(self.x,self.y,self.data,100,
                                 alpha=self.alpha,
                                 levels=self.levels,
@@ -146,7 +148,7 @@ class plot_global:
         self.m.drawmeridians(np.arange(0,360,30))
         self.m.drawparallels(np.arange(-90,90,30))
         #print(dir(m))
-        self.m.drawmapboundary(fill_color='aqua')
+        
         
     
     
@@ -167,27 +169,27 @@ class plot_global:
         
         if self.pos_text and self.text:
             self.t = self.plt.text(self.pos_text[0],self.pos_text[1], self.text, transform=self.ax.transAxes,
-                        color=text_color, fontweight='bold',fontsize=text_size)
+                        color=self.text_color, fontweight='bold',fontsize=self.text_size)
             self.t.set_bbox(dict(facecolor='red', alpha=0.81, edgecolor='black'))
         
         # anotate data focus
-        if self.annotate_focus_txt and self.pos_annotate_focus:
+        if self.annotate_text_focus and self.annotate_pos_focus:
         #    puts('writing data focus')
-            xn,yn=self.m(self.pos_annotate_focus[1],self.pos_annotate_focus[0])
-            self.plt.annotate(self.annotate_focus_txt,
-                              color=self.color_annote_focus,
+            xn,yn=self.m(self.annotate_pos_focus[1],self.annotate_pos_focus[0])
+            self.plt.annotate(self.annotate_text_focus,
+                              color=self.annotate_color_focus,
                               xy=(xn,yn),
-                              fontweight=self.fontweight_annote_focus,
+                              fontweight=self.annotate_fontweight_focus,
                               xytext=(xn,yn),
                               xycoords='data',
                               textcoords='data')
 
         # anotate data focus
-        if self.annotate_loc_txt and self.pos_annotate_loc:
+        if self.annotate_loc_txt and self.annotate_loc_focus:
           #  puts('writing data focus')
-            xn,yn=self.m(self.pos_annotate_loc[1],self.pos_annotate_loc[0])
+            xn,yn=self.m(self.annotate_loc_focus[1],self.annotate_loc_focus[0])
             self.plt.annotate(self.annotate_loc_txt,
-                              color=self.color_annote_loc,
+                              color=self.annotate_loc_color,
                               xy=(xn,yn),
                               fontweight=self.fontweight_annote_loc,
                               xytext=(xn,yn),
@@ -201,19 +203,19 @@ class plot_global:
     def annotate_data_focus(self,txt:str,fontsize:int=None,color:str='black',fontweight:str='bold'):
         data_city = self.dn.get_data_from_point(self.loc_focus)
         post_data = f'{(float(data_city[self.key_noaa].to_pandas()[self.indice]-self.subtr_data)):.2f}'
-        self.annotate_focus_txt = txt%{'data':post_data}
-        self.color_annote_focus = color
-        self.fontweight_annote_focus = fontweight
-        self.pos_annotate_focus = self.loc_focus
+        self.annotate_text_focus = txt%{'data':post_data}
+        self.annotate_color_focus = color
+        self.annotate_fontweight_focus = fontweight
+        self.annotate_pos_focus = self.loc_focus
         
         
     def annotate_data_loc(self,txt:str,loc:tuple=(40.776676,-73.971321),fontsize:int=None,color:str='black',fontweight:str='bold'):
         data_city = self.dn.get_data_from_point(loc)
         post_data = f'{((data_city[self.key_noaa].to_pandas()[self.indice]-self.subtr_data)):.2f}'
         self.annotate_loc_txt = txt%{'data':post_data}
-        self.color_annote_loc = color
+        self.annotate_loc_color = color
         self.fontweight_annote_loc = fontweight
-        self.pos_annotate_loc = loc
+        self.annotate_loc_focus = loc
         
         
     def render(self,show=True,save=True):

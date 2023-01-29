@@ -25,8 +25,8 @@ time0=time.time()
 ping_list = [0]
 def ping_fun(ping_init:float,i,size):
     ping = time.time()-ping_init
-    ping_list.append(ping)
-    ping_m = sum(ping_list)/len(ping_list)
+   # ping_list.append(ping)
+    ping_m = ping #sum(ping_list)/len(ping_list)
     i_=i+1
     eta = (size-i_)*ping_m
     min_eta = eta//60
@@ -65,6 +65,7 @@ class Create_plot_gif:
     color_annote_loc:str = 'white'
     fps:float = 10
     cmap:plt.cm=plt.cm.jet
+    resolution:str = 'c'
 
 
 

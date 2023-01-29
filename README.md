@@ -29,6 +29,8 @@
 '>NOMADS</a> NOAA/NASA</b></p>
 <hr/>
 
+Please, <a href='github.com/reinanbr/noaawc'>Fork-me</a>.
+
 ## Installation
 
 ```bash
@@ -40,8 +42,175 @@ $ pip install noaawc -U
 
 ## Examples
 
+### plotting 
 
-### Wind Jet's
+
+#### wind temperature with focus point
+
+
+```py
+from noaawc.plot import plot_global
+from noawclg.main import get_noaa_data as gnd
+import matplotlib.pyplot as plt
+
+plt.style.use('dark_background')
+cmap = 'inferno'
+
+date_base = '26/01/2023'
+dn = gnd(date=date_base)
+indice = 5
+
+
+
+pg = plot_global(dn=dn)
+pg.path=f'{cmap}_juazeiro_wind_focus1.png'
+pg.title=f'Temperatura dos Jatos de Ventos'
+pg.key_noaa='tmpmwl'
+pg.indice=indice
+
+pg.loc_focus=(-9.43847,-40.5052)
+
+pg.text_cb='°C'
+pg.author='@gpftc | @reinanbr_'
+pg.cmap = cmap
+
+
+
+pg.render(show=True)
+
+```
+
+<img height='300' src='inferno_juazeiro_wind_focus1.png'/>
+
+#### wind temperature with focus point and text focus 
+
+```py
+from noaawc.plot import plot_global
+from noawclg.main import get_noaa_data as gnd
+import matplotlib.pyplot as plt
+
+plt.style.use('dark_background')
+cmap = 'inferno'
+
+date_base = '26/01/2023'
+dn = gnd(date=date_base)
+indice = 5
+
+
+
+pg = plot_global(dn=dn)
+pg.path=f'{cmap}_juazeiro_wind_focus2.png'
+pg.title=f'Temperatura dos Jatos de Ventos'
+pg.key_noaa='tmpmwl'
+pg.indice=indice
+
+pg.loc_focus=(-9.43847,-40.5052)
+pg.annotate_data_focus('. Juazeiro: %(data)sºC')
+pg.annotate_color_focus = 'white'
+
+pg.text_cb='°C'
+pg.author='@gpftc | @reinanbr_'
+pg.cmap = cmap
+
+
+
+pg.render(show=True)
+
+```
+
+<img height='300' src='inferno_juazeiro_wind_focus2.png'/>
+
+#### wind temperature with focus point, text focus and zoom
+
+```py 
+from noaawc.plot import plot_global
+from noawclg.main import get_noaa_data as gnd
+import matplotlib.pyplot as plt
+
+plt.style.use('dark_background')
+cmap = 'inferno'
+
+date_base = '26/01/2023'
+dn = gnd(date=date_base)
+indice = 5
+
+
+
+pg = plot_global(dn=dn)
+pg.path=f'{cmap}_juazeiro_wind_focus.png'
+pg.title=f'Temperatura dos Jatos de Ventos'
+pg.key_noaa='tmpmwl'
+pg.indice=indice
+
+pg.loc_focus=(-9.43847,-40.5052)
+pg.annotate_data_focus('. Juazeiro: %(data)sºC')
+pg.annotate_color_focus = 'white'
+pg.zoom(1,-1,-1,1)
+
+pg.text_cb='°C'
+pg.author='@gpftc | @reinanbr_'
+pg.cmap = cmap
+
+
+
+pg.render(show=True)
+```
+
+<img height='300' src='inferno_juazeiro_wind_focus3.png'/>
+
+<hr>
+
+### Animation GIF
+
+#### First time with the class ```noaawc.animate.Create_plot_gif```:
+
+```py
+>>>  from noaawc.animate import Create_plot_gif as cgp
+```
+
+init var's in the class
+```py
+#.../noaawc/animate.py
+#...
+import matplotlib.pyplot as plt
+from noawclg.main import get_noaa_data as gnd
+#...
+
+
+
+@dataclass
+class Create_plot_gif:
+    dn:gnd
+    path_save:str='img.gif'
+    size:int=70
+    path_data:str='data/img_'
+    title:str=''
+    key_noaa:str='vgrdpbl'
+    loc_focus:tuple=(-9.45,-40.5)
+    point_init=False
+    point_end:float=False
+    text_cb:str='°C'
+    lon_stop:float=False
+    alpha:float=.9
+    subtr_data:float=273
+    speed_frame:float=1
+    speed_degree_frame:float=1
+    zoom:tuple = None
+    author = '@gpfc_ | @reinanbr_'
+    annotate_focus_txt:str = None
+    annotate_loc_txt:str = None
+    annotate_loc_pos:tuple = (40.776676,-73.971321)
+    color_annote_loc:str = 'white'
+    fps:float = 10
+    cmap:plt.cm=plt.cm.jet
+    resolution:str = 'c'
+
+
+#...
+
+```
+
+#### Wind Jet's
 spinning
 ```py
 from noaawc.animate import Create_plot_gif as Cpf # importing class to work gif plot
@@ -87,7 +256,7 @@ in the .../tests_gifs/wind/CMRmap_test_spin_temp_wind.gif:
 
 <hr>
 
-### surface temperature
+#### surface temperature
 ```py
 from noaawc.animate import Create_plot_gif as Cpf
 from noawclg.main import get_noaa_data as gnd
@@ -119,7 +288,7 @@ gif.render()
 
 <hr>
 
-### zoom on a focus
+#### zoom on a focus
 ```py
 from noaawc.animate import Create_plot_gif as Cpf
 from noawclg.main import get_noaa_data as gnd
