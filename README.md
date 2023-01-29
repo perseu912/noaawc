@@ -82,6 +82,10 @@ pg.render(show=True)
 
 <img height='300' src='inferno_juazeiro_wind_focus1.png'/>
 
+
+
+<hr>
+
 #### wind temperature with focus point and text focus 
 
 ```py
@@ -120,7 +124,10 @@ pg.render(show=True)
 
 <img height='300' src='inferno_juazeiro_wind_focus2.png'/>
 
+<hr>
+
 #### wind temperature with focus point, text focus and zoom
+
 
 ```py 
 from noaawc.plot import plot_global
