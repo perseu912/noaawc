@@ -1,7 +1,7 @@
 
 <h1 align='center'></h1>
 <p align='center'>
-<img src='img/photo_2023-01-17_02-10-48.jpg' width='350' height='300'>
+<img src='https://raw.githubusercontent.com/reinanbr/noaawc/main/img/photo_2023-01-17_02-10-48.jpg' width='350' height='300'>
 
 
 <br/>
@@ -83,7 +83,7 @@ gif.render() # rendering the frames of gif
 
 in the .../tests_gifs/wind/CMRmap_test_spin_temp_wind.gif:
 
-<img height='300' src='tests_gifs/wind/CMRmap_test_spin_temp_wind.gif'>
+<img height='300' src='https://raw.githubusercontent.com/reinanbr/noaawc/main/tests_gifs/wind/CMRmap_test_spin_temp_wind.gif'>
 
 <hr>
 
@@ -98,7 +98,7 @@ point_init=[-9.43,-89]
 point_jua = [-9.43,-40.50]
 
 gif = Cpf(dn=dn)
-gif.path_save='tests_gifs/surface_temp/CMRmap_test_spin_temp_surface.gif'
+gif.path_save='https://raw.githubusercontent.com/reinanbr/noaawc/main/tests_gifs/surface_temp/CMRmap_test_spin_temp_surface.gif'
 gif.key_noaa = 'tmpsfc'
 gif.title='temperatura da superficie'
 gif.point_init=point_init
@@ -115,7 +115,7 @@ gif.color_annote_loc = 'white' # color of text
 gif.tracing()
 gif.render()
 ```
-<img height='300' src='tests_gifs/surface_temp/CMRmap_test_spin_temp_surface.gif'>
+<img height='300' src='https://raw.githubusercontent.com/reinanbr/noaawc/main/tests_gifs/surface_temp/CMRmap_test_spin_temp_surface.gif'>
 
 <hr>
 
@@ -137,4 +137,4 @@ gif.annotate_loc_txt = '. Nova York: %(data)sºC'
 gif.tracing()
 gif.render()
 ```
-<img height='300' src='tests_gifs/surface_temp/test_zoom_focus_temp_surface.gif'>
+<img height='300' src='https://raw.githubusercontent.com/reinanbr/noaawc/main/tests_gifs/surface_temp/test_zoom_focus_temp_surface.gif'>

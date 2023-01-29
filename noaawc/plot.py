@@ -172,7 +172,7 @@ class plot_global:
         
         # anotate data focus
         if self.annotate_focus_txt and self.pos_annotate_focus:
-            puts('writing data focus')
+        #    puts('writing data focus')
             xn,yn=self.m(self.pos_annotate_focus[1],self.pos_annotate_focus[0])
             self.plt.annotate(self.annotate_focus_txt,
                               color=self.color_annote_focus,
@@ -184,7 +184,7 @@ class plot_global:
 
         # anotate data focus
         if self.annotate_loc_txt and self.pos_annotate_loc:
-            puts('writing data focus')
+          #  puts('writing data focus')
             xn,yn=self.m(self.pos_annotate_loc[1],self.pos_annotate_loc[0])
             self.plt.annotate(self.annotate_loc_txt,
                               color=self.color_annote_loc,
@@ -219,19 +219,19 @@ class plot_global:
     def render(self,show=True,save=True):
         self.plt.style.use('dark_background')
         
-        puts('getting data ..')
+       # puts('getting data ..')
         self.mining_data()
-        puts('getted data')
+       # puts('getted data')
         
-        puts('renderinzing plot ...')
+      #  puts('renderinzing plot ...')
         self.rendering_image()
         self.rendering_text()
-        puts('renderinzed plot')
+     #   puts('renderinzed plot')
         
         if save:
-            puts('saving plot ...')
+         #   puts('saving plot ...')
             self.plt.savefig(self.path)
-            puts('saved plot')
+        #    puts('saved plot')
         if show:
             self.plt.show()
         self.plt.cla()

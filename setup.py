@@ -8,7 +8,7 @@ with open("README.md", "r") as fh:
     readme = fh.read()
 
 setup(name='noaawc',
-    version='0.1',
+    version='0.1.1',
     url='https://github.com/reinanbr/noaawc',
     license='GPLv3',
     author='Reinan Br',
@@ -18,4 +18,4 @@ setup(name='noaawc',
     keywords='climate weather noaa plots',
     description=u'Library for plotting dataset from noaa site in basemap',
     packages=find_packages(),
-    install_requires=['pygrib','numpy','noawclg','matplotlib','pandas','psutil','imageio','basemap'],)
+    install_requires=['pygrib','kitano','numpy','noawclg','matplotlib','pandas','psutil','imageio','basemap'],)
