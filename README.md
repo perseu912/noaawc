@@ -29,7 +29,7 @@
 '>NOMADS</a> NOAA/NASA</b></p>
 <hr/>
 
-Please, <a href='github.com/reinanbr/noaawc'>Fork-me</a>.
+Please, <a href='https://github.com/reinanbr/noaawc'>Fork-me</a>.
 
 ## Installation
 
@@ -80,7 +80,7 @@ pg.render(show=True)
 
 ```
 
-<img height='300' src='inferno_juazeiro_wind_focus1.png'/>
+<img height='300' src='https://raw.githubusercontent.com/reinanbr/noaawc/main/inferno_juazeiro_wind_focus1.png'/>
 
 
 
@@ -122,7 +122,7 @@ pg.render(show=True)
 
 ```
 
-<img height='300' src='inferno_juazeiro_wind_focus2.png'/>
+<img height='300' src='https://raw.githubusercontent.com/reinanbr/noaawc/main/inferno_juazeiro_wind_focus2.png'/>
 
 <hr>
 
@@ -163,7 +163,7 @@ pg.cmap = cmap
 pg.render(show=True)
 ```
 
-<img height='300' src='inferno_juazeiro_wind_focus3.png'/>
+<img height='300' src='https://raw.githubusercontent.com/reinanbr/noaawc/main/inferno_juazeiro_wind_focus3.png'/>
 
 <hr>
 

@@ -8,7 +8,7 @@ with open("README.md", "r") as fh:
     readme = fh.read()
 
 setup(name='noaawc',
-    version='0.1.1.1',
+    version='0.1.2.1',
     url='https://github.com/reinanbr/noaawc',
     license='GPLv3',
     author='Reinan Br',
