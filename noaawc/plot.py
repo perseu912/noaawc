@@ -33,6 +33,7 @@ from kitano.logging import puts
 the function base and more
 important from it work
 '''
+
 plt.style.use('dark_background')
 
 @dataclass
@@ -57,14 +58,19 @@ class plot_global:
     key_noaa:str='tmpmwl'
     subtr_data:str=273,
     text_cb:str='ºC'
-    alpha:int=.9
+    alpha:float=.9
     author:str='@gpftc_ | @reinanbr_'
     level_data:int=25
+    resolution:str='c'
     keys:str = ''
     fillcontinents_colors:str = ''
     cmap:plt.cm = plt.cm.inferno
     ax:plt.subplot = plt.subplot(111)
     plt:plt=plt
+    
+    line_states:float=0.1
+    line_countries:float=0.35
+    
     xleft:int=None
     xright:int=None
     yup:int=None
@@ -119,7 +125,7 @@ class plot_global:
         self.m = Basemap(projection='ortho',
                          lat_0=self.loc_focus[0],
                          lon_0=self.loc_focus[1],
-                         resolution='c',llcrnrx=self.xleft, llcrnry=self.ydown, urcrnrx=self.xright, urcrnry=self.yup, 
+                         resolution=self.resolution,llcrnrx=self.xleft, llcrnry=self.ydown, urcrnrx=self.xright, urcrnry=self.yup, 
 )
         #self.m.bluemarble(scale=.5)
         
@@ -139,8 +145,8 @@ class plot_global:
         #self.m.bluemarble()
         self.m.drawcoastlines()
         #self.m.drawmapboundary()#fill_color='aqua')
-        self.m.drawstates(linewidth=0.1)
-        self.m.drawcountries(linewidth=0.35)
+        self.m.drawstates(linewidth=self.line_states)
+        self.m.drawcountries(linewidth=self.line_countries)
         #self.m.drawcountries(linewidth=0.25)
         
         #m.drawmapboundary(fill_color='aqua')
@@ -157,13 +163,13 @@ class plot_global:
         self.cbar.ax.set_title(f'by: {self.author}',fontweight='bold')
         
         #xn2,yn2=m(-9.52,-40.61)
-        self.t = self.plt.text(-0.3,0.99,self.date_text, transform=self.ax.transAxes,
+        self.t = self.plt.text(-0.34,0.99,self.date_text, transform=self.ax.transAxes,
                     color='white', fontweight='bold',fontsize=14)
-        self.t = self.plt.text(1.1,1,f'*\n{self.key_noaa}:\n{self.keys[self.key_noaa]}',transform=self.ax.transAxes,
+        self.t = self.plt.text(1.16,1,f'*\n{self.key_noaa}:\n{self.keys[self.key_noaa]}',transform=self.ax.transAxes,
                     color='grey', fontweight='bold',fontsize=5)
-        self.t = self.plt.text(1.1,0.03,'data: GFS 0.25', transform=self.ax.transAxes,
+        self.t = self.plt.text(1.16,0.03,'data: GFS 0.25', transform=self.ax.transAxes,
                     color='white', fontweight='bold',fontsize=8)
-        self.t = self.plt.text(1.12,-0.01,'NOAA/NASA', transform=self.ax.transAxes,
+        self.t = self.plt.text(1.18,-0.01,'NOAA/NASA', transform=self.ax.transAxes,
                     color='grey', fontweight='bold',fontsize=8)
         #t.set_bbox(dict(facecolor='red', alpha=0.81, edgecolor='black'))
         
@@ -238,6 +244,5 @@ class plot_global:
             self.plt.show()
         self.plt.cla()
         self.plt.clf()
-
 
 

@@ -9,7 +9,7 @@ plt.style.use('dark_background')
 
 
 
-date_base = '13/01/2023'
+date_base = '03/04/2023'
 
 main.set_date(date_base)
 dn = gnd()
@@ -38,5 +38,5 @@ for cmap in cmaps:
     pg.cmap = cmap
 
     #pg.date = '10/01/2023'
-    pg.render(show=False)
+    pg.render(show=True)
     i=i+1
