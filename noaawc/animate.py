@@ -18,15 +18,19 @@ import matplotlib.pyplot as plt
 from noawclg.main import get_noaa_data as gnd
 from dataclasses import dataclass
 from kitano.logging import puts
+import statistics as stts
+import urllib
+from animateplot.video.video import RenderVideo
 
 global time0
 global ping_list
 time0=time.time()
 ping_list = [0]
+
 def ping_fun(ping_init:float,i,size):
     ping = time.time()-ping_init
-   # ping_list.append(ping)
-    ping_m = ping #sum(ping_list)/len(ping_list)
+    ping_list.append(ping)
+    ping_m = stts.median(ping_list) #sum(ping_list)/len(ping_list)
     i_=i+1
     eta = (size-i_)*ping_m
     min_eta = eta//60
@@ -43,9 +47,10 @@ def ping_fun(ping_init:float,i,size):
 @dataclass
 class Create_plot_gif:
     dn:gnd
-    path_save:str='img.gif'
+    path_gif:str='img.gif'
+    path_mp4:str='video.mp4'
     size:int=70
-    path_data:str='data/img_'
+    path_data:str='data'
     title:str=''
     key_noaa:str='vgrdpbl'
     loc_focus:tuple=(-9.45,-40.5)
@@ -99,15 +104,16 @@ class Create_plot_gif:
 
 
 
-    def render(self):
+    def render_cache(self):
         time_0=time.time()
 
-        if not os.path.isdir('data'):
-            os.mkdir('data')
+        if not os.path.isdir(self.path_data):
+            os.mkdir(self.path_data)
 
-        images = []          
+        images = []
+        img_path = urllib.parse.quote(self.title)
         for i in range(self.size):
-            path_img = f'{self.path_data}_{i}.png'
+            path_img = f'{self.path_data}/{img_path}_{i}.png'
 
             pg = plot_global(dn=self.dn,path=path_img,title=self.title,key_noaa=self.key_noaa,alpha=self.alpha,
                     indice=i,loc_focus=self.locs_focus[i],subtr_data=self.subtr_data,author=self.author,text_cb=self.text_cb)
@@ -126,8 +132,25 @@ class Create_plot_gif:
             pg.render(show=False)
             ping_fun(time_0,i,self.size)
             images.append(imageio.imread(path_img))
+        self.images = images
 
-        print('criando gif...')
-        path_gif = self.path_save
-        imageio.mimsave(path_gif,images,fps=self.fps)
-        os.system('rm -rf data/*.png')
+
+
+
+    def render_gif(self):
+        print('rendering gif...')
+        path_gif = self.path_gif
+        imageio.mimsave(path_gif,self.images,fps=self.fps)
+        #for img in self.images:
+        os.system(f'rm -rf {self.path_data}/*.png')
+
+
+
+    def render_mp4(self,path_save:str):
+        print('rendering mp4...')
+        file_mp4 = path_save
+        render_video = RenderVideo(self.path_data,fps=self.fps)
+        render_video.render_mp4(file_mp4)
+        #for img in self.images:
+        os.system(f'rm -rf {self.path_data}/*.png')
+
