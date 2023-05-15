@@ -20,7 +20,7 @@ from dataclasses import dataclass
 from kitano.logging import puts
 import statistics as stts
 import urllib
-from animateplot.video.video import RenderVideo
+from noaawc.video import RenderVideo
 
 global time0
 global ping_list
@@ -111,6 +111,7 @@ class Create_plot_gif:
             os.mkdir(self.path_data)
 
         images = []
+        images_path = []
         img_path = urllib.parse.quote(self.title)
         for i in range(self.size):
             path_img = f'{self.path_data}/{img_path}_{i}.png'
@@ -132,7 +133,9 @@ class Create_plot_gif:
             pg.render(show=False)
             ping_fun(time_0,i,self.size)
             images.append(imageio.imread(path_img))
+            images_path.append(path_img)
         self.images = images
+        self.images_path = images_path
 
 
 
@@ -149,7 +152,7 @@ class Create_plot_gif:
     def render_mp4(self,path_save:str):
         print('rendering mp4...')
         file_mp4 = path_save
-        render_video = RenderVideo(self.path_data,fps=self.fps)
+        render_video = RenderVideo(self.images_path[1:],fps=self.fps)
         render_video.render_mp4(file_mp4)
         #for img in self.images:
         os.system(f'rm -rf {self.path_data}/*.png')

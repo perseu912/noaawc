@@ -69,7 +69,7 @@ class plot_global:
     plt:plt=plt
     
     line_states:float=0.1
-    line_countries:float=0.35
+    line_countries:float=1.5
     
     xleft:int=None
     xright:int=None
@@ -141,12 +141,12 @@ class plot_global:
         #cm1=plt.contourf(x,y,data1,100,shading='nearest',cmap=plt.get_cmap('inferno'))
         #plt.cla()
         #plt.clf()
-        self.cbar=self.plt.colorbar(self.cm,orientation='horizontal',extend='both',fraction=0.07,pad=0.05)
+        self.cbar=self.plt.colorbar(self.cm,orientation='horizontal',fraction=0.05,pad=-0.2)
         #self.m.bluemarble()
         self.m.drawcoastlines()
         #self.m.drawmapboundary()#fill_color='aqua')
         self.m.drawstates(linewidth=self.line_states)
-        self.m.drawcountries(linewidth=self.line_countries)
+        self.m.drawcountries(linewidth=self.line_countries,color='green')
         #self.m.drawcountries(linewidth=0.25)
         
         #m.drawmapboundary(fill_color='aqua')
@@ -160,17 +160,17 @@ class plot_global:
     
     def rendering_text(self):
         self.cbar.set_label(self.text_cb,y=0,ha='right',color='white')
-        self.cbar.ax.set_title(f'by: {self.author}',fontweight='bold')
+        self.cbar.ax.set_title(f'by: {self.author}',fontweight='bold',fontsize=10)
         
         #xn2,yn2=m(-9.52,-40.61)
-        self.t = self.plt.text(-0.34,0.99,self.date_text, transform=self.ax.transAxes,
-                    color='white', fontweight='bold',fontsize=14)
-        self.t = self.plt.text(1.16,1,f'*\n{self.key_noaa}:\n{self.keys[self.key_noaa]}',transform=self.ax.transAxes,
+        self.t = self.plt.text(-0.24,0.99,self.date_text, transform=self.ax.transAxes,
+                    color='white', fontweight='bold',fontsize=10)
+        self.t = self.plt.text(1.06,1,f'*\n{self.key_noaa}:\n{self.keys[self.key_noaa]}',transform=self.ax.transAxes,
                     color='grey', fontweight='bold',fontsize=5)
-        self.t = self.plt.text(1.16,0.03,'data: GFS 0.25', transform=self.ax.transAxes,
-                    color='white', fontweight='bold',fontsize=8)
-        self.t = self.plt.text(1.18,-0.01,'NOAA/NASA', transform=self.ax.transAxes,
-                    color='grey', fontweight='bold',fontsize=8)
+        self.t = self.plt.text(1.08,0.235,'data: GFS 0.25', transform=self.ax.transAxes,
+                    color='white', fontweight='bold',fontsize=6)
+        self.t = self.plt.text(1.09,0.21,'NOAA/NASA', transform=self.ax.transAxes,
+                    color='grey', fontweight='bold',fontsize=6)
         #t.set_bbox(dict(facecolor='red', alpha=0.81, edgecolor='black'))
         
         if self.pos_text and self.text:
@@ -202,7 +202,7 @@ class plot_global:
                               xycoords='data',
                               textcoords='data')
 
-        self.plt.title(self.title,fontweight='bold',fontsize=16)
+        self.plt.title(self.title,fontweight='bold',fontsize=14)
         
         
         

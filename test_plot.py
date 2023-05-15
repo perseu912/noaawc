@@ -5,20 +5,20 @@ import matplotlib.pyplot as plt
 plt.style.use('dark_background')
 cmap = 'inferno'
 
-date_base = '06/04/2023'
+date_base = '13/05/2023'
 dn = gnd(date=date_base)
 indice = 5
 
 
 
 pg = plot_global(dn=dn)
-pg.path=f'{cmap}_juazeiro_wind_focus1.png'
+pg.path=f'edit_plot.png'
 pg.title=f'Temperatura dos Jatos de Ventos'
 pg.key_noaa='tmpmwl'
 pg.indice=indice
 
-pg.loc_focus=(-9.43847,-40.5052)
-pg.zoom(1,-1,-1,1)
+pg.loc_focus=(-15.43847,-40.5052)
+# pg.zoom(1,-1,-1,1)
 
 pg.text_cb='°C'
 pg.author='@gpftc | @reinanbr_'
@@ -26,5 +26,4 @@ pg.cmap = cmap
 
 pg.resolution = 'l'
 pg.level_data = 40
-pg.line_states = .3
-pg.render(show=True)
+pg.render(show=False)
