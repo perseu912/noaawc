@@ -51,7 +51,7 @@ class plot_global:
     text_size=9
     fontweight_text='bold'
     facecolor_text:str='red'
-    edgecolor_text:str='black'
+    edgecolor_text:str='white'
     annotate_size:float=9
     annotate_color:str='white'
     loc_focus:tuple=(0,0)
@@ -61,7 +61,7 @@ class plot_global:
     alpha:float=.9
     author:str='@gpftc_ | @reinanbr_'
     level_data:int=25
-    resolution:str='c'
+    resolution:str='l'
     keys:str = ''
     fillcontinents_colors:str = ''
     cmap:plt.cm = plt.cm.inferno
@@ -69,7 +69,10 @@ class plot_global:
     plt:plt=plt
     
     line_states:float=0.1
+    color_line_states:str = 'yellow'
+    
     line_countries:float=1.5
+    color_line_countries:str='green'
     
     xleft:int=None
     xright:int=None
@@ -78,12 +81,12 @@ class plot_global:
     
     annotate_pos_focus:tuple=None
     annotate_text_focus:str = None
-    annotate_color_focus:str = "black"
+    annotate_color_focus:str = "white"
     annotate_fontweight_focus:str = None
     
     annotate_loc_focus:tuple=None
     annotate_loc_txt:str = None
-    annotate_loc_color:str = 'black'
+    annotate_loc_color:str = 'white'
     fontweight_annote_loc:str = None
     #annotate_pos_focus:str = None
     
@@ -142,11 +145,12 @@ class plot_global:
         #plt.cla()
         #plt.clf()
         self.cbar=self.plt.colorbar(self.cm,orientation='horizontal',fraction=0.05,pad=-0.2)
+        self.cbar.ax.tick_params(labelsize=7) 
         #self.m.bluemarble()
         self.m.drawcoastlines()
         #self.m.drawmapboundary()#fill_color='aqua')
-        self.m.drawstates(linewidth=self.line_states)
-        self.m.drawcountries(linewidth=self.line_countries,color='green')
+        self.m.drawstates(linewidth=self.line_states,color=self.color_line_states)
+        self.m.drawcountries(linewidth=self.line_countries,color=self.color_line_countries)
         #self.m.drawcountries(linewidth=0.25)
         
         #m.drawmapboundary(fill_color='aqua')
@@ -159,8 +163,10 @@ class plot_global:
     
     
     def rendering_text(self):
-        self.cbar.set_label(self.text_cb,y=0,ha='right',color='white')
-        self.cbar.ax.set_title(f'by: {self.author}',fontweight='bold',fontsize=10)
+        self.cbar.set_label(self.text_cb,y=0,ha='right',color='white',fontsize=9)
+        self.cbar.ax.set_title(f'by: {self.author}',fontweight='bold',fontsize=9)
+        ticklabs = self.cbar.ax.get_yticklabels()
+        self.cbar.ax.set_yticklabels(ticklabs, fontsize=15)
         
         #xn2,yn2=m(-9.52,-40.61)
         self.t = self.plt.text(-0.24,0.99,self.date_text, transform=self.ax.transAxes,
@@ -176,7 +182,7 @@ class plot_global:
         if self.pos_text and self.text:
             self.t = self.plt.text(self.pos_text[0],self.pos_text[1], self.text, transform=self.ax.transAxes,
                         color=self.text_color, fontweight='bold',fontsize=self.text_size)
-            self.t.set_bbox(dict(facecolor='red', alpha=0.81, edgecolor='black'))
+            self.t.set_bbox(dict(facecolor='red', alpha=0.81, edgecolor='white'))
         
         # anotate data focus
         if self.annotate_text_focus and self.annotate_pos_focus:
@@ -206,7 +212,7 @@ class plot_global:
         
         
         
-    def annotate_data_focus(self,txt:str,fontsize:int=None,color:str='black',fontweight:str='bold'):
+    def annotate_data_focus(self,txt:str,fontsize:int=None,color:str='white',fontweight:str='bold'):
         data_city = self.dn.get_data_from_point(self.loc_focus)
         post_data = f'{(float(data_city[self.key_noaa].to_pandas()[self.indice]-self.subtr_data)):.2f}'
         self.annotate_text_focus = txt%{'data':post_data}
@@ -215,7 +221,7 @@ class plot_global:
         self.annotate_pos_focus = self.loc_focus
         
         
-    def annotate_data_loc(self,txt:str,loc:tuple=(40.776676,-73.971321),fontsize:int=None,color:str='black',fontweight:str='bold'):
+    def annotate_data_loc(self,txt:str,loc:tuple=(40.776676,-73.971321),fontsize:int=None,color:str='white',fontweight:str='bold'):
         data_city = self.dn.get_data_from_point(loc)
         post_data = f'{((data_city[self.key_noaa].to_pandas()[self.indice]-self.subtr_data)):.2f}'
         self.annotate_loc_txt = txt%{'data':post_data}

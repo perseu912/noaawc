@@ -3,7 +3,7 @@ from noawclg.main import get_noaa_data as gnd
 
 
 def test_render():
-    dn = gnd(date='13/05/2023') 
+    dn = gnd(date='21/05/2023') 
 
     point_init=[-9.43,-89] 
     point_jua = [-9.43,-40.50] 
@@ -17,10 +17,13 @@ def test_render():
 
     gif.title='precipitação de chuvas (acumuladas)'
 
-    gif.point_init=point_init 
-    gif.point_end=point_jua
+   
+    gif.loc_focus=(-9.43847,-40.5052)
+    gif.annotate_data_focus=('. Juazeiro: %(data)sKg/m^2')
+    gif.annotate_color_focus = 'white'
+    gif.zoom=(1,-1,-1,1)
 
-    gif.lon_stop=-39
+
 
     gif.cmap = cmap
 

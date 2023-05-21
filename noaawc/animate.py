@@ -62,9 +62,18 @@ class Create_plot_gif:
     subtr_data:float=273
     speed_frame:float=1
     speed_degree_frame:float=1
+    
     zoom:tuple = None
+    
+    line_states:float=0.1
+    color_line_states:str = 'yellow'
+    annotate_data_focus:str = None
+    
+    line_countries:float=1.5
+    color_line_countries:str='green'
+    
     author = '@gpfc_ | @reinanbr_'
-    annotate_focus_txt:str = None
+    annotate_data_foc:str = None
     annotate_loc_txt:str = None
     annotate_loc_pos:tuple = (40.776676,-73.971321)
     color_annote_loc:str = 'white'
@@ -116,14 +125,26 @@ class Create_plot_gif:
         for i in range(self.size):
             path_img = f'{self.path_data}/{img_path}_{i}.png'
 
-            pg = plot_global(dn=self.dn,path=path_img,title=self.title,key_noaa=self.key_noaa,alpha=self.alpha,
-                    indice=i,loc_focus=self.locs_focus[i],subtr_data=self.subtr_data,author=self.author,text_cb=self.text_cb)
+            pg = plot_global(dn=self.dn,
+                             path=path_img,
+                             line_states=self.line_states,
+                             color_line_states=self.color_line_states,
+                             line_countries=self.line_countries,
+                             color_line_countries=self.color_line_countries,
+                             title=self.title,
+                             key_noaa=self.key_noaa,
+                             alpha=self.alpha,
+                             indice=i,
+                             loc_focus=self.locs_focus[i],
+                             subtr_data=self.subtr_data,
+                             author=self.author,
+                             text_cb=self.text_cb)
 
             if self.zoom:
                 pg.zoom(*self.zoom)
                 
-            if self.annotate_focus_txt:
-                pg.annotate_data_focus(self.annotate_focus_txt)
+            if self.annotate_data_focus:
+                pg.annotate_data_focus(self.annotate_data_focus)
             
             if self.annotate_loc_txt:
                 pg.annotate_data_loc(self.annotate_loc_txt,loc=self.annotate_loc_pos,color=self.color_annote_loc)
@@ -156,4 +177,7 @@ class Create_plot_gif:
         render_video.render_mp4(file_mp4)
         #for img in self.images:
         os.system(f'rm -rf {self.path_data}/*.png')
+
+
+
 
