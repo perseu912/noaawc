@@ -9,9 +9,9 @@ def test_render():
     cmap = 'inferno'
 
     gif = Cpf(dn=dn) 
-    gif.key_noaa = 'tmpsfc'
+    gif.key_noaa = 'tmp80m'
 
-    gif.title = 'temperatura da superfície'
+    gif.title = 'Temperatura do Ar'
 
     gif.color_line_states = 'black'
     gif.loc_focus = point_jua
@@ -26,7 +26,7 @@ def test_render():
 
     gif.tracing()
     gif.render_cache()
-    gif.render_mp4('test_surface.mp4')
+    gif.render_mp4('wind_temp.mp4')
     
     
     

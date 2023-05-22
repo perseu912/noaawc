@@ -34,8 +34,6 @@ the function base and more
 important from it work
 '''
 
-plt.style.use('dark_background')
-
 @dataclass
 class plot_global:
     dn:gnd
@@ -125,6 +123,8 @@ class plot_global:
             self.ydown = ydown*decai
 
     def rendering_image(self):
+        self.plt.style.use('dark_background')
+
         self.m = Basemap(projection='ortho',
                          lat_0=self.loc_focus[0],
                          lon_0=self.loc_focus[1],
