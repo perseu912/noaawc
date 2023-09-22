@@ -3,20 +3,20 @@ from noawclg.main import get_noaa_data as gnd
 
 
 def test_render():
-    dn = gnd(date='21/05/2023') 
+    dn = gnd(date='21/09/2023') 
 
     point_jua = (-9.43847,-40.5052)
-    cmap = 'inferno'
+    cmap = 'CMRmap'
 
-    gif = Cpf(dn=dn) 
-    gif.key_noaa = 'tmp80m'
+    gif = Cpf(dn=dn,fps=7) 
+    gif.key_noaa = 'tmpsfc'
 
-    gif.title = 'Temperatura do Ar'
+    gif.title = 'Temperatura dos Jatos de Ventos na Atmosfera'
 
     gif.color_line_states = 'black'
     gif.loc_focus = point_jua
     gif.annotate_data_focus = ('. Juazeiro: %(data)sºC')
-    gif.zoom = (1,-1,-1,1)
+    gif.zoom = (2,-2,-2,2)
     gif.fps = 7
 
     gif.cmap = cmap
@@ -26,7 +26,7 @@ def test_render():
 
     gif.tracing()
     gif.render_cache()
-    gif.render_mp4('wind_temp.mp4')
+    gif.render_mp4('jet_wind_temp.mp4')
     
     
     

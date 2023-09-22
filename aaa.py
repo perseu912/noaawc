@@ -1,10 +1,10 @@
 import noawclg.main as main
 from noawclg.main import get_noaa_data as gnd
 from noawclg.plot import plot_data_from_place as pdp
-import matplotlib.pyplot as plt
 
 
-date_base = '21/05/2023'
+
+date_base = '20/09/2023'
 main.set_date(date_base)
 data_noaa = gnd()
 

@@ -10,7 +10,7 @@ indice = 5
 
 
 
-pg = plot_global(dn=dn)
+pg = plot_global(dn=dn,fps=7)
 pg.path=f'geralplot.png'
 pg.title=f'Temperatura dos Jatos de Ventos'
 pg.key_noaa='tmpmwl'
@@ -20,7 +20,7 @@ pg.indice=indice
 pg.loc_focus=(-9.43847,-40.5052)
 pg.annotate_data_focus('. Juazeiro: %(data)sºC')
 pg.annotate_color_focus = 'white'
-pg.zoom(1,-1,-1,1)
+pg.zoom(2,-2,-2,2)
 
 
 pg.text_cb='°C'
