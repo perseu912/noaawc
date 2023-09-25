@@ -1,14 +1,14 @@
 
 <h1 align='center'></h1>
 <p align='center'>
-<img src='https://raw.githubusercontent.com/reinanbr/noaawc/main/img/photo_2023-01-17_02-10-48.jpg' width='350' height='300'>
+<img src='https://raw.githubusercontent.com/reinanbr/noaawc/main/tests/img/photo_2023-01-17_02-10-48.jpg' width='350' height='300'>
 
 
 <br/>
 <a href="https://github.com/perseu912"><img title="Autor" src="https://img.shields.io/badge/Autor-reinan_br-blue.svg?style=for-the-badge&logo=github"></a>
 
 <p align='center'>
-<!-- github dados --
+<!-- github dados -->
 <!-- sites de pacotes -->
 <a href='https://pypi.org/project/noaawc/'><img src='https://img.shields.io/pypi/v/noaawc'></a>
 <!-- <a href='#'><img src='https://img.shields.io/pypi/wheel/noaawc'></a>
@@ -80,7 +80,7 @@ pg.render(show=True)
 
 ```
 
-<img height='300' src='https://raw.githubusercontent.com/reinanbr/noaawc/main/inferno_juazeiro_wind_focus1.png'/>
+<img height='300' src='https://raw.githubusercontent.com/reinanbr/noaawc/main/tests/plots/inferno_juazeiro_wind_focus1.png'/>
 
 
 
@@ -122,7 +122,7 @@ pg.render(show=True)
 
 ```
 
-<img height='300' src='https://raw.githubusercontent.com/reinanbr/noaawc/main/inferno_juazeiro_wind_focus2.png'/>
+<img height='300' src='https://raw.githubusercontent.com/reinanbr/noaawc/main/tests/plots/inferno_juazeiro_wind_focus2.png'/>
 
 <hr>
 
@@ -163,7 +163,7 @@ pg.cmap = cmap
 pg.render(show=True)
 ```
 
-<img height='300' src='https://raw.githubusercontent.com/reinanbr/noaawc/main/inferno_juazeiro_wind_focus3.png'/>
+<img height='300' src='https://raw.githubusercontent.com/reinanbr/noaawc/main/tests/plots/inferno_juazeiro_wind_focus3.png'/>
 
 <hr>
 
@@ -259,7 +259,7 @@ gif.render() # rendering the frames of gif
 
 in the .../tests_gifs/wind/CMRmap_test_spin_temp_wind.gif:
 
-<img height='300' src='https://raw.githubusercontent.com/reinanbr/noaawc/main/tests_gifs/wind/CMRmap_test_spin_temp_wind.gif'>
+<img height='300' src='https://raw.githubusercontent.com/reinanbr/noaawc/main/tests/tests_gifs/wind/CMRmap_test_spin_temp_wind.gif'>
 
 <hr>
 
@@ -291,7 +291,7 @@ gif.color_annote_loc = 'white' # color of text
 gif.tracing()
 gif.render()
 ```
-<img height='300' src='https://raw.githubusercontent.com/reinanbr/noaawc/main/tests_gifs/surface_temp/CMRmap_test_spin_temp_surface.gif'>
+<img height='300' src='https://raw.githubusercontent.com/reinanbr/noaawc/main/tests/tests_gifs/surface_temp/CMRmap_test_spin_temp_surface.gif'>
 
 <hr>
 
@@ -313,4 +313,4 @@ gif.annotate_loc_txt = '. Nova York: %(data)sºC'
 gif.tracing()
 gif.render()
 ```
-<img height='300' src='https://raw.githubusercontent.com/reinanbr/noaawc/main/tests_gifs/surface_temp/test_zoom_focus_temp_surface.gif'>
+<img height='300' src='https://raw.githubusercontent.com/reinanbr/noaawc/main/tests/tests_gifs/surface_temp/test_zoom_focus_temp_surface.gif'>
