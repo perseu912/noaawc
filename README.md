@@ -122,7 +122,7 @@ pg.render(show=True)
 
 ```
 
-<img height='300' src='https://raw.githubusercontent.com/reinanbr/noaawc/main/tests/plots/inferno_juazeiro_wind_focus2.png'/>
+<img height='300' src='https://raw.githubusercontent.com/reinanbr/noaawc/main/inferno_juazeiro_wind_focus2.png'/>
 
 <hr>
 
