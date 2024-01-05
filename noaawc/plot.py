@@ -144,7 +144,7 @@ class plot_global:
         #cm1=plt.contourf(x,y,data1,100,shading='nearest',cmap=plt.get_cmap('inferno'))
         #plt.cla()
         #plt.clf()
-        self.cbar=self.plt.colorbar(self.cm,orientation='horizontal',fraction=0.05,pad=-0.2)
+        self.cbar=self.plt.colorbar(self.cm,orientation='horizontal',fraction=0.04,pad=-0.1)
         self.cbar.ax.tick_params(labelsize=7) 
         #self.m.bluemarble()
         self.m.drawcoastlines()

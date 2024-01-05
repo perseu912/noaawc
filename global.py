@@ -17,8 +17,8 @@ pg.title=f'Temperatura dos Jatos de Ventos'
 pg.key_noaa='tmpmwl'
 pg.indice=indice
 
-pg.loc_focus=(-9.43847,-40.5052)
-pg.annotate_data_focus('. Juazeiro: %(data)sºC')
+pg.loc_focus=(-29.43847,-40.5052)
+pg.annotate_data_focus('. : %(data)sºC')
 pg.annotate_color_focus = 'white'
 
 pg.text_cb='°C'
