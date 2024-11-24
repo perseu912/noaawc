@@ -5,9 +5,11 @@ import matplotlib.pyplot as plt
 from mpl_toolkits.basemap import Basemap
 from noawclg import get_noaa_data as gnd
 import pandas as pd
-from dataclasses import dataclass
-import datetime
-from kitano.logging import puts
+from datetime import datetime
+from kitano import puts
+
+from matplotlib.colors import ListedColormap
+from dataclasses import dataclass, field
 
 # global dn
 # global date_base
@@ -62,7 +64,7 @@ class plot_global:
     resolution:str='l'
     keys:str = ''
     fillcontinents_colors:str = ''
-    cmap:plt.cm = plt.cm.inferno
+    cmap: ListedColormap = field(default_factory=lambda: ListedColormap(["red", "blue"])) #cmap:plt.cm = plt.cm.inferno
     ax:plt.subplot = plt.subplot(111)
     plt:plt=plt
     

@@ -7,16 +7,17 @@ license = "GPLv3"
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.9"
-noawclg = "^0.0.4.6"
+python = "^3.10"
+noawclg = "^0.0.8"
 basemap = "^1.3.6"
 imageio = "^2.23.0"
 psutil = "^5.9.4"
 kitano = "^0.0.7"
 pytest = "^7.2.1"
-animateplot = "0.3.2"
+
 
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+nimateplot = "0.3.2"

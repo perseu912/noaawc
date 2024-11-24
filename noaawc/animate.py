@@ -17,10 +17,13 @@ from noaawc.plot import plot_global
 import matplotlib.pyplot as plt
 from noawclg.main import get_noaa_data as gnd
 from dataclasses import dataclass
-from kitano.logging import puts
+from kitano import puts
 import statistics as stts
 import urllib
 from noaawc.video import RenderVideo
+
+from matplotlib.colors import ListedColormap
+from dataclasses import dataclass, field
 
 global time0
 global ping_list
@@ -78,7 +81,7 @@ class Create_plot_gif:
     annotate_loc_pos:tuple = (40.776676,-73.971321)
     color_annote_loc:str = 'white'
     fps:float = 10
-    cmap:plt.cm=plt.cm.jet
+    cmap: ListedColormap = field(default_factory=lambda: ListedColormap(["red", "blue"]))#cmap:plt.cm=plt.cm.jet
     resolution:str = 'c'
 
 

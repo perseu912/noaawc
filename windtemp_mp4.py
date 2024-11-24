@@ -1,9 +1,11 @@
 from noaawc.animate import Create_plot_gif as Cpf
 from noawclg.main import get_noaa_data as gnd
+import warnings
+warnings.filterwarnings("ignore")
 
 
 def test_render():
-    dn = gnd(date='21/09/2023') 
+    dn = gnd(date='23/11/2024') 
 
     point_jua = (-9.43847,-40.5052)
     cmap = 'CMRmap'
